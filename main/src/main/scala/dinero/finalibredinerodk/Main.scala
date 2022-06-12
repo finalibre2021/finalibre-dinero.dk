@@ -1,0 +1,20 @@
+package dinero
+package finalibredinerodk
+
+object Main extends App {
+  // run `sbt gen usecase` to generate
+  // one of these dependency graphs
+  // and add them to the Seq
+  Seq[DependencyGraph](
+    // user.analytics.DependencyGraph.apply
+  ).foreach(_ apply args)
+
+  private[this] type DependencyGraph =
+    Array[String] => Any
+
+  println("─" * 100)
+
+  println("hello world")
+
+  println("─" * 100)
+}

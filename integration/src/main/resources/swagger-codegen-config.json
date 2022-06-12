@@ -1,0 +1,7 @@
+{
+  sortParamsByRequiredFlag: true,
+  ensureUniqueParams: true,
+  modelPackage : "finalibre.dinero.integrations.api.generated"
+
+
+}
