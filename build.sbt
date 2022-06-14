@@ -1,6 +1,5 @@
 import Dependencies._
 import Util._
-//import com.reactific.sbt._
 
 ThisBuild / organization := "finalibre"
 ThisBuild / scalaVersion := "3.1.2"
@@ -10,6 +9,7 @@ ThisBuild / useSuperShell := false
 lazy val `finalibre-dinero` =
   project
     .in(file("."))
+    .disablePlugins(OpenApiCodeGenPlugin)
     .aggregate(domain, application, integration, persistence, service)
     .settings(
       name := "finalibre-dinero"
@@ -34,6 +34,7 @@ lazy val integration =
     .in(file("integration"))
     .dependsOn(application % Cctt)
     .settings(commonSettings)
+    //.disablePlugins(OpenApiCodeGenPlugin)
 	.settings(
 	  codegenType := "scala",
 	  openApiSpec := file("./integration/src/main/resources/swagger-dinero.json")//,
@@ -83,7 +84,6 @@ lazy val commonScalacOptions = Seq(
   Test / console / scalacOptions :=
     (Compile / console / scalacOptions).value,
 )
-dependencyOverrides += "io.swagger.codegen.v3" % "swagger-codegen-cli" % "3.0.34"
 
 addCommandAlias("gen", "finalibre-dinero/g8Scaffold")
 
